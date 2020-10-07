@@ -1,6 +1,6 @@
 <template>
   <div id="tab-bar">
-    <el-row :gutter="20">
+    <el-row>
       <el-col :span="4">
         <div class="logo">
           <img src="~assets/img/logo/logo.jpg">
@@ -54,15 +54,14 @@
 
 <style scoped>
   #tab-bar {
-    margin-top: 5px;
+    background-color: #202023;
   }
 
   .logo {
     float: left;
     width: 44px;
     height: 44px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 5px 10px;
     cursor: pointer;
   }
 
@@ -81,7 +80,7 @@
 
   .back {
     float: right;
-    margin-top: 10px;
+    margin-top: 15px;
     cursor: pointer;
   }
 
@@ -92,16 +91,22 @@
 
   .search {
     width: 230px;
-    height: 23px;
+    height: 40px;
     margin-left: 100px;
     margin-top: 5px;
+    font-size: 20px;
+  }
+
+  /deep/ .el-input__inner {
+    border-radius: 30px;
   }
 
   .login {
     float: left;
     line-height: 44px;
     font-size: 14px;
-    margin-right: 30px;
+    margin-right: 40px;
+    margin-top: 5px;
   }
 
   .login-item {
@@ -116,6 +121,7 @@
 
   .click-icon {
     float: left;
+    margin-top: 5px;
   }
 
   .click-icon-item {
