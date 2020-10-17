@@ -5,7 +5,8 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const Home = () => import('views/home/Home')
-const Recommend = () => import('views/home/HomeComps/recommend/Recommend')
+const Recommend = () => import('views/home/HomeComps/Recommend')
+const MusicDetail = () => import('views/musicdetail/MusicDetail')
 
 const routes = [
   {
@@ -25,6 +26,10 @@ const routes = [
         component: Recommend
       }
     ]
+  },
+  {
+    path: '/musicdetail/:id',
+    component: MusicDetail
   }
 ]
 

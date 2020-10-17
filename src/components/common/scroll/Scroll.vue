@@ -19,6 +19,12 @@ export default {
     pullUpLoad: {
       type: Boolean,
       default: false
+    },
+    scrollbar: {
+      type: [Boolean, Object],
+      default() {
+        return false
+      }
     }
   },
   data() {
@@ -30,8 +36,9 @@ export default {
     // 1.创建BScroll对象
     this.scroll = new BScroll(this.$refs.wrapper, {
       click: true,
-      mouseWheel: true,
+      mouseWheel: true,//开启鼠标滚轮
       bounce: true,
+      scrollbar: this.scrollbar,
       probeType: this.probeType,
       pullUpLoad: this.pullUpLoad
     })
@@ -49,6 +56,8 @@ export default {
         this.$emit('pullingUp')
       })
     }
+
+    this.$refs.wrapper.scrollerHeight = 10000000
   },
   methods: {
     scrollTo(x, y, time) {

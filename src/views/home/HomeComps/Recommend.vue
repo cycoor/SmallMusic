@@ -12,10 +12,10 @@
 
 <script>
 
-import MusicBanner from './MusicBanner'
-import MusicSheet from './MusicSheet'
-import MusicBroadCast from './MusicBroadcast'
-import MusicNews from './MusicNews'
+import MusicBanner from './recommend/MusicBanner'
+import MusicSheet from './recommend/MusicSheet'
+import MusicBroadCast from './recommend/MusicBroadcast'
+import MusicNews from './recommend/MusicNews'
 
 import {_Banner, _Recommends, _Broadcast, _NewMusic} from "network/home";
 import Scroll from 'components/common/scroll/Scroll'

@@ -2,7 +2,7 @@
   <div class="music-sheet">
     <div class="music-sheet-list" v-for="(item,index) in recommend" :key="index">
       <div>
-        <img :src="item.picUrl" alt="" @load="LoadImg">
+        <img :src="getImgUrl(item)" alt="" @load="LoadImg" @click="DetailClick(index)">
       </div>
       <span>{{ item.name }}</span>
       <div class="number">
@@ -29,6 +29,12 @@ export default {
   methods: {
     LoadImg() {
       this.$emit('LoadImg')
+    },
+    getImgUrl(item) {
+      return item.picUrl || item.coverImgUrl;
+    },
+    DetailClick(index) {
+      this.$router.push('/musicdetail/' + this.recommend[index].id)
     }
   }
 }
