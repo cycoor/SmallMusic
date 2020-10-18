@@ -12,8 +12,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(item,index) in musiclist" :key="index" :class="{backColor:setBackColor(index)}">
-        <td>{{ getNumber(index) }}</td>
+      <tr v-for="(item,index) in musiclist"
+          :key="index"
+          :class="{backColor:setBackColor(index)}"
+          @dblclick="musicItemClick(index)">
+        <td>
+          <span v-show="!(playIndex==index)">{{ getNumber(index) }}</span>
+          <div v-show="playIndex==index"><img src="~assets/img/playmusic/currentplay.svg" alt=""></div>
+        </td>
         <td>
           <img src="~assets/img/leftmenu/live.svg" alt="" class="live">
           <img src="~assets/img/leftmenu/xiazai.svg" alt="" class="xiazai">
@@ -39,6 +45,18 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      playIndex: .5
+    }
+  },
+  created() {
+    this.$bus.$on('Playing', (index, path) => {
+      if (this.$route.path == path) {
+        this.playIndex = index;
+      }
+    })
+  },
   methods: {
     getNumber(index) {
       if ((index + 1) <= 9) {
@@ -51,6 +69,13 @@ export default {
         return true
       }
       return false
+    },
+    musicItemClick(index) {
+      if (this.$parent.$parent.$el.className.indexOf('play-music-list') != -1) {
+        this.$bus.$emit('PlayMusicListItem', index);
+        return;
+      }
+      this.$emit('musicItemClick', index);
     }
   }
 }
@@ -107,9 +132,11 @@ tbody tr td:nth-child(2) img {
 tbody tr td:nth-child(2) img.xiazai {
   margin-left: 6px;
 }
-thead, tbody tr td:nth-child(3){
+
+thead, tbody tr td:nth-child(3) {
   color: #fff;
 }
+
 .backColor {
   background: #1a1c20;
 }

@@ -19,7 +19,7 @@
 import TabBar from 'components/content/tabbar/TabBar'
 import MusicMenu from 'components/content/musiclayout/MusicMenu'
 import MusicContent from 'components/content/musiclayout/MusicContent'
-import PlayButton from 'components/common/playbutton/PlayButton'
+import PlayButton from 'components/content/playmusic/PlayMusic'
 
 export default {
   name: "App",

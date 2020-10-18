@@ -11,6 +11,34 @@ export function MusicListDetail(id) {
   })
 }
 
+export function _getMusicUrl(id) {
+  return request({
+    url: '/song/url',
+    params: {
+      id: id
+    }
+  })
+}
+
+export function _musicRecommend(id, limit) {
+  return request({
+    url: '/comment/music',
+    params: {
+      id: id,
+      limit: limit
+    }
+  })
+}
+
+export function _getLyric(id) {
+  return request({
+    url: '/lyric',
+    params: {
+      id: id
+    }
+  })
+}
+
 export function SongsDetail(arr) {
   return request({
     url: '/song/detail',

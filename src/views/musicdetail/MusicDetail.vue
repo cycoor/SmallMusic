@@ -1,9 +1,9 @@
 <template>
   <div id="music-detail">
     <scroll :probe-type="3" class="content" ref="scroll">
-      <music-detail-brief :baseInfo="baseInfo"/>
+      <music-detail-brief :baseInfo="baseInfo" @allPlay="playMusic()"/>
       <music-detail-bar :list="list"/>
-      <music-detail-item :musiclist="musiclist"/>
+      <music-detail-item :musiclist="musiclist" @musicItemClick="playMusic"/>
     </scroll>
   </div>
 </template>
@@ -15,6 +15,7 @@ import MusicDetailBar from './MusicComps/MusicDetailBar'
 import MusicDetailItem from './MusicComps/MusicDetailItem'
 
 import {MusicListDetail, SongsDetail, baseInfo, songDetail,} from 'network/detail'
+import {indexMixin} from './plays'
 import Scroll from "components/common/scroll/Scroll";
 
 
@@ -33,6 +34,7 @@ export default {
       musiclist: []
     }
   },
+  mixins: [indexMixin],
   created() {
     this.id = this.$route.params.id;
 
@@ -52,7 +54,7 @@ export default {
           })
         }
       })
-    }
+    },
   }
 }
 </script>
